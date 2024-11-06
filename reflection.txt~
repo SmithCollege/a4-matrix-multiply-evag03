@@ -1,0 +1,32 @@
+[Pair programmed with Glenvelis Perez]
+
+At what point does the tiled approach pay off in terms of computational time/speed?
+
+When the block size exceeds 500, as that is when its speed beats all other Matrix Multiply methods.
+
+Analyze your results, when does it make sense to use the various approaches?
+
+The CPU approach generally becomes slower the larger the block size is, but has a varying record (fastest at size 50, second fastest at size 128, fastest at size 250, second slowest at size 500). It's likely best to use it for exeedingly small block sizes.
+The GPU approach is the slowest overall, being the slowest of the four approaches in each size. It is fastest with block sizes of 50 or lower.
+The Tiled approach works best on block sizes of 500 or more.
+The cuBLAS approach works best on small block sizes, like 50 and 128.
+
+How did your speed compare with cuBLAS?
+
+It was faster than all other approaches in the 50 and 128 block sizes, but lagged behind once the block sizes grew more.
+
+What went well with this assignment?
+
+The general CPU and GPU approaches for Matrix Multiply were straightforward to implement, and provided a greater understanding of the differing responsibilites of GPU vs. CPU in a program.
+
+What was difficult?
+
+The Tiled and cuBLAS approaches were more difficult as we had to determine how tiling could be sucessfully implemented as well as built upon by our prexisting code from the previous approaches. Once we got the conceptual confusion out of the way, the main challenge was double checking syntax.
+
+How would you approach differently?
+
+I would probably try to be as positive as possible that I had the proper code for one approach before moving onto the next, especially since the approaches' code tended to build on one another, so any issue in one approach had a chance of hopping into the next. This could have been a big issue while bug testing if I wasn't careful. Also, adding the timers early on in the process would have saved a bit of tedious copy/pasting at the end of the assignment, since we hadn't added the timers beforehand.
+
+Anything else you want me to know?
+
+Nah - thanks a bunch for helping extensively in office hours, I had a lot of concepts confused beforehand that I feel more confident in now!
